@@ -16,7 +16,7 @@ module EPCC
 
       def client_id
         ENV.fetch('EPCC_CLIENT_ID') do
-          raise EPCC::Error::NoClientID
+          raise EPCC::NoClientID
         end
       end
 
