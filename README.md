@@ -1,3 +1,6 @@
+# Preface
+This SDK is still a work in progress and, as such, not all endpoints have been implemented
+
 # Configuration
 
 Using a block
