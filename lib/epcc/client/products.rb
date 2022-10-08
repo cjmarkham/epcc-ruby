@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EPCC
   class Client
     # Module for interacting with products
@@ -14,9 +16,9 @@ module EPCC
         get('/pcm/products', options)
       end
 
-      # Gets a single product
+      # Get a single product
       #
-      # @param id [String] The ID of the product
+      # @param id [String] The UUID of the product
       def product(id)
         get("/pcm/products/#{id}")
       end

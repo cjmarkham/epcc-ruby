@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'epcc/authentication'
 require 'epcc/client/products'
+require 'epcc/client/hierarchies'
 
 module EPCC
   # EPCC Client to communicate with the EPCC API
@@ -7,6 +10,7 @@ module EPCC
     include EPCC::Authentication
     include EPCC::Request
     include EPCC::Client::Products
+    include EPCC::Client::Hierarchies
 
     attr_writer :api_endpoint, :client_id, :client_secret
 

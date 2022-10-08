@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module EPCC
+  # Helper methods for API responses
   class Response
     def initialize(response)
       @response = response

@@ -1,19 +1,20 @@
+# frozen_string_literal: true
+
 module EPCC
   # Error handlers
   class Error < StandardError
     def self.response_error(response)
       status = response.code.to_i
 
-      if (klass = case status
-                  when 400 then EPCC::BadRequest
-                  when 401 then EPCC::Unauthorized
-                  when 403 then EPCC::Forbidden
-                  when 404 then EPCC::NotFound
-                  when 422 then EPCC::UnprocessableEntity
-      end)
-
-        klass.new(response)
+      klass = case status
+        when 400 then EPCC::BadRequest
+        when 401 then EPCC::Unauthorized
+        when 403 then EPCC::Forbidden
+        when 404 then EPCC::NotFound
+        when 422 then EPCC::UnprocessableEntity
       end
+
+      klass&.new(response)
     end
   end
 

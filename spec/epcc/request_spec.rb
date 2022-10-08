@@ -1,8 +1,98 @@
+# frozen_string_literal: true
+
 require 'epcc/request'
 
 RSpec.describe(EPCC::Request) do
   klass = Class.new
   klass.extend(described_class)
+
+  describe('get') do
+    it('works with default options') do
+      expect(HTTParty).to receive(:send).with(
+        'get',
+        '/pcm/products?',
+        {
+          headers: {
+            Authorization: 'Bearer: ',
+            Accept: 'application/json',
+            'Content-Type' => 'application/json',
+          }
+        }
+      ).and_return(OpenStruct.new({
+        code: 200,
+        body: {}.to_json,
+      }))
+
+      klass.get('/pcm/products')
+    end
+
+    it('works with custom headers') do
+      expect(HTTParty).to receive(:send).with(
+        'get',
+        '/pcm/products?',
+        {
+          headers: {
+            Authorization: 'Bearer: ',
+            Accept: 'application/json',
+            'Content-Type': 'x-www-form-urlencoded',
+          }
+        }
+      ).and_return(OpenStruct.new({
+        code: 200,
+        body: {}.to_json,
+      }))
+
+      klass.get(
+        '/pcm/products',
+        {
+          headers: {
+            'Content-Type': 'x-www-form-urlencoded',
+          }
+        }
+      )
+    end
+  end
+
+  describe('post') do
+    it('works with a body') do
+      expect(HTTParty).to receive(:send).with(
+        'post',
+        '/pcm/products?',
+        {
+          headers: {
+            Authorization: 'Bearer: ',
+            Accept: 'application/json',
+            'Content-Type' => 'application/json',
+          },
+          body: {
+            data: {
+              type: 'product',
+              attributes: {
+                name: 'Product',
+              }
+            }
+          }.to_json,
+        }
+      ).and_return(OpenStruct.new({
+        code: 201,
+        body: {}.to_json,
+      }))
+
+      klass.post(
+        '/pcm/products',
+        {
+          body: {
+            data: {
+              type: 'product',
+              attributes: {
+                name: 'Product',
+              }
+            }
+          }
+        }
+      )
+    end
+  end
 
   describe('filter_from_hash') do
     it('returns an empty string when no filters specified') do
