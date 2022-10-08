@@ -83,6 +83,36 @@ module EPCC
           }
         })
       end
+
+      # Moves nodes under a parent node
+      def move_nodes(hierarchy_id, node_id, *node_ids)
+        data = []
+
+        (node_ids || []).each do |id|
+          data.push({
+            type: 'node',
+            id: id,
+          })
+        end
+
+        post("/pcm/hierarchies/#{hierarchy_id}/nodes/#{node_id}/relationships/children", {
+          body: {
+            data: data,
+          }
+        })
+      end
+
+      # Moves a node to a different parent node
+      def change_node_parent(hierarchy_id, parent_node_id, node_id)
+        post("/pcm/hierarchies/#{hierarchy_id}/nodes/#{parent_node_id}", {
+          body: {
+            data: {
+              type: 'node',
+              id: node_id,
+            }
+          }
+        })
+      end
     end
   end
 end

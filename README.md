@@ -52,3 +52,19 @@ products = client.products({limit: 100, offset: 10})
 ```ruby
 products = client.products({filter: {eq: {sku: 'xyz'}}})
 ```
+
+# Contributing
+* For this repo
+* Create a new branch
+* Submit PR to merge in to main
+
+All methods for interacting with the API are in `./lib/epcc/client`.
+
+The follow a simple process of using either get, put, post or delete methods defined on the client.
+
+Example: 
+```ruby
+def products(options = {})
+  get('/pcm/products', options)
+end
+```
