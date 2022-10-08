@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'epcc/epcc'
+require 'epcc'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
