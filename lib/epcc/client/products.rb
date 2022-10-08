@@ -1,5 +1,3 @@
-require 'epcc/request'
-
 module EPCC
   class Client
     # Module for interacting with products
