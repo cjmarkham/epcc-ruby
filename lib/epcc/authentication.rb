@@ -24,6 +24,8 @@ module EPCC
       access_token = response['access_token'] unless EPCC.response_type == 'struct'
 
       instance_variable_set('@access_token', access_token)
+
+      response
     end
   end
 end
