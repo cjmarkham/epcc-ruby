@@ -11,6 +11,7 @@ module EPCC
         when 401 then EPCC::Unauthorized
         when 403 then EPCC::Forbidden
         when 404 then EPCC::NotFound
+        when 405 then EPCC::MethodNotAllowed
         when 422 then EPCC::UnprocessableEntity
       end
 
@@ -31,4 +32,6 @@ module EPCC
   class UnprocessableEntity < ClientError; end
 
   class NoClientID < Error; end
+
+  class MethodNotAllowed < ClientError; end
 end
