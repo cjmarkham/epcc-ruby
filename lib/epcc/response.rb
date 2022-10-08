@@ -3,7 +3,7 @@
 module EPCC
   # Helper methods for API responses
   class Response
-    NO_BODY_STATUS = %i[204 405]
+    NO_BODY_STATUS = %i[204 405].freeze
 
     def initialize(response)
       @response = response
