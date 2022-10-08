@@ -3,6 +3,8 @@
 module EPCC
   # Helper methods for API responses
   class Response
+    NO_BODY_STATUS = %i[204 405].freeze
+
     def initialize(response)
       @response = response
     end
@@ -25,6 +27,10 @@ module EPCC
 
     def struct
       JSON.parse(@response.body, object_class: OpenStruct)
+    end
+
+    def body?
+      @response.body != '' && !NO_BODY_STATUS.include?(status) && !@response.body.nil?
     end
   end
 end

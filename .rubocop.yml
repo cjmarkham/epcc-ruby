@@ -19,3 +19,6 @@ Layout/EndAlignment:
 
 Layout/CaseIndentation:
   Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false

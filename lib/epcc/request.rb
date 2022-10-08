@@ -23,7 +23,9 @@ module EPCC
           response = HTTParty.send(method, url, params)
           res = EPCC::Response.new(response)
 
-          return nil if res.status == 204
+          return EPCC::Error.response_error(response) if res.failure?
+
+          return nil unless res.body?
           return res.json if EPCC.response_type == 'json'
           return res.struct if EPCC.response_type == 'struct'
         rescue StandardError => e
