@@ -8,15 +8,22 @@ module EPCC
       post_options = {
         body: {
           grant_type: 'client_credentials',
-          client_id: @client_id,
+          client_id: EPCC.client_id,
+        },
+        headers: {
+          'Content-Type': 'x-www-form-urlencoded',
         }
       }
 
-      post_options[:body][:client_secret] = @client_secret if grant_type != 'password'
+      post_options[:body][:client_secret] = EPCC.client_secret if grant_type != 'password'
 
       response = post('/oauth/access_token', post_options)
 
-      instance_variable_set('@access_token', response['access_token'])
+      access_token = nil
+      access_token = response.access_token if EPCC.response_type == 'struct'
+      access_token = response['access_token'] unless EPCC.response_type == 'struct'
+
+      instance_variable_set('@access_token', access_token)
     end
   end
 end

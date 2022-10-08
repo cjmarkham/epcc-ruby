@@ -11,8 +11,6 @@ module EPCC
     attr_writer :api_endpoint, :client_id, :client_secret
 
     def initialize(options = {})
-      EPCC.reset!
-
       EPCC::Configuration.options.each do |option|
         value = options[option].nil? ? EPCC.instance_variable_get("@#{option}") : options[option]
         instance_variable_set("@#{option}", value)
