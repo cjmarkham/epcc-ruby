@@ -21,6 +21,8 @@ module EPCC
         value = options[option].nil? ? EPCC.instance_variable_get("@#{option}") : options[option]
         instance_variable_set("@#{option}", value)
       end
+
+      EPCC.client = self
     end
   end
 end

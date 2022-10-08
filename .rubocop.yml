@@ -22,3 +22,6 @@ Layout/CaseIndentation:
 
 Metrics/CyclomaticComplexity:
   Enabled: false
+
+Layout/ArgumentAlignment:
+  Enabled: false

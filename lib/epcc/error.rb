@@ -34,4 +34,6 @@ module EPCC
   class NoClientID < Error; end
 
   class MethodNotAllowed < ClientError; end
+
+  class InvalidResource < Error; end
 end

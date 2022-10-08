@@ -19,6 +19,8 @@ module EPCC
 
         url = url_from_options(path, options)
 
+        p path
+
         begin
           response = HTTParty.send(method, url, params)
           res = EPCC::Response.new(response)

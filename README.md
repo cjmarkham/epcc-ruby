@@ -41,7 +41,17 @@ products = client.products
 product = client.product('uuid')
 ```
 
-Plural methods that return lists also accept pagination options and filters
+Plural methods that return lists of resources also accept pagination options and filters
+
+# Built In Resources
+It is also possible to use in built model-esque resources. This enables you to ensure resources are valid before using them.
+```ruby
+product = EPCC::Resources::Product.new({
+  name: 'Product',
+})
+product.valid?
+product.create
+```
 
 # Pagination
 ```ruby
