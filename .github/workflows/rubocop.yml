@@ -1,0 +1,26 @@
+name: "Rubocop"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: ['2.7', '3.0']
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true 
+
+    - name: Rubocop run
+      run: bundle exec rubocop
