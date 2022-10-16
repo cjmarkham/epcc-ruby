@@ -10,6 +10,7 @@ module EPCC
       # @option options [String] :offset The page offset
       # @option options [Hash] :filter The filter to apply to the request
       # @option options [Hash] :pagination The pagination to apply to the request
+      #
       # @example client.products({ eq: { sku: 'Foobar' } })
       # @example client.products({ page: { limit: 10, offset: 0 } })
       def products(options = {})

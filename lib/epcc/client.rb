@@ -4,6 +4,8 @@ require 'epcc/authentication'
 require 'epcc/client/products'
 require 'epcc/client/hierarchies'
 require 'epcc/client/nodes'
+require 'epcc/client/catalogs'
+require 'epcc/client/pricebooks'
 
 module EPCC
   # EPCC Client to communicate with the EPCC API
@@ -13,6 +15,8 @@ module EPCC
     include EPCC::Client::Products
     include EPCC::Client::Hierarchies
     include EPCC::Client::Nodes
+    include EPCC::Client::Catalogs
+    include EPCC::Client::Pricebooks
 
     attr_writer :api_endpoint, :client_id, :client_secret
 

@@ -10,6 +10,7 @@ module EPCC
       # @option options [String] :offset The page offset
       # @option options [Hash] :filter The filter to apply to the request
       # @option options [Hash] :pagination The pagination to apply to the request
+      #
       # @example client.hierarchies({ eq: { sku: 'Foobar' } })
       # @example client.hierarchies({ page: { limit: 10, offset: 0 } })
       def hierarchies(options = {})

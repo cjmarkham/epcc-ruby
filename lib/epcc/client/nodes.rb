@@ -15,6 +15,7 @@ module EPCC
       # Create a node
       #
       # @param hierarchy_id [String] The UUID of the hierarchy
+      #
       # @option options [Hash] data The node data
       def create_node(hierarchy_id, options)
         post("/pcm/hierarchies/#{hierarchy_id}/nodes", { body: options })
@@ -85,6 +86,10 @@ module EPCC
       end
 
       # Moves nodes under a parent node
+      #
+      # @param hierarchy_id [String] The UUID of the hierarchy
+      # @param node_id [String] The UUID of the node
+      # @param node_ids [String] A list of node UUIDs
       def move_nodes(hierarchy_id, node_id, *node_ids)
         data = []
 
@@ -103,6 +108,10 @@ module EPCC
       end
 
       # Moves a node to a different parent node
+      #
+      # @param hierarchy_id [String] The UUID of the hierarchy
+      # @param parent_node_id [String] The UUID of the parent node
+      # @param node_id [String] The UUID of the node
       def change_node_parent(hierarchy_id, parent_node_id, node_id)
         post("/pcm/hierarchies/#{hierarchy_id}/nodes/#{parent_node_id}", {
           body: {
