@@ -12,7 +12,7 @@ Layout/FirstHashElementIndentation:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 30
 
 Layout/EndAlignment:
   Enabled: false
