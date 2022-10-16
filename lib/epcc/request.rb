@@ -13,6 +13,8 @@ module EPCC
         params[:headers].merge!({
           Authorization: "Bearer: #{@access_token}",
           Accept: 'application/json',
+          'X-EPCC-SDK': 'Ruby',
+          'X-EPCC-SDK-VERSION': EPCC::VERSION,
         })
         params[:headers]['Content-Type'] = 'application/json' unless params[:headers].key?(:'Content-Type')
         params[:body] = params[:body].to_json if params[:body] && params[:headers]['Content-Type'] == 'application/json'
@@ -23,7 +25,7 @@ module EPCC
           response = HTTParty.send(method, url, params)
           res = EPCC::Response.new(response)
 
-          return EPCC::Error.response_error(response) if res.failure?
+          raise EPCC::Error.new(response).response_error if res.failure?
 
           return nil unless res.body?
           return res.json if EPCC.response_type == 'json'
