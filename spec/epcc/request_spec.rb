@@ -16,6 +16,8 @@ RSpec.describe(EPCC::Request) do
             Authorization: 'Bearer: ',
             Accept: 'application/json',
             'Content-Type' => 'application/json',
+            'X-EPCC-SDK': 'Ruby',
+            'X-EPCC-SDK-VERSION': EPCC::VERSION,
           }
         }
       ).and_return(OpenStruct.new({
@@ -35,6 +37,8 @@ RSpec.describe(EPCC::Request) do
             Authorization: 'Bearer: ',
             Accept: 'application/json',
             'Content-Type': 'x-www-form-urlencoded',
+            'X-EPCC-SDK': 'Ruby',
+            'X-EPCC-SDK-VERSION': EPCC::VERSION,
           }
         }
       ).and_return(OpenStruct.new({
@@ -63,6 +67,8 @@ RSpec.describe(EPCC::Request) do
             Authorization: 'Bearer: ',
             Accept: 'application/json',
             'Content-Type' => 'application/json',
+            'X-EPCC-SDK': 'Ruby',
+            'X-EPCC-SDK-VERSION': EPCC::VERSION,
           },
           body: {
             data: {
